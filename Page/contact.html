@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Contacto</title>
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+  <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/Card-Carousel-1.css">
+  <link rel="stylesheet" href="../assets/css/Card-Carousel.css">
+  <link rel="stylesheet" href="../assets/css/ebs-contact-form-1.css">
+  <link rel="stylesheet" href="../assets/css/ebs-contact-form.css">
+  <link rel="stylesheet" href="../assets/css/News-Cards.css">
+  <link rel="stylesheet" href="../php/forms.php">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom" action="forms.php">
+    <div class="container">
+      <button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="contact.html">Contactarnos</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Usuarios</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" role="presentation" href="perfil.php">Perfil</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="logout.php">Cerrar sesión</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav><br><br><br><br><br><br>
+  <div class="container" id="info-container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center text-info">Contactanos</h2>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6" id="contact-box">
+        <p id="contact-text">
+          <li>Si tienes problemas con el acortador/enlaces simplemente borra el cache de tu navegador o usa otro, con
+            eso se soluciona.</li>
+          <li>Si tiene algunas opiniones, nos puede enviar un Gmail. </li>
+          <li>Queremos saber tu opinión, para saber lo que piensa sobre el contenido. Gracias</li>
+        </p>
+        <div class="info-box"><i class="fa fa-map-marker my-info-icons"></i> <span
+            class="text-uppercase text-info">Ubicación: </span><span>Argentina, Mendoza.</span></div>
+        <div class="info-box"><i class="fa fa-envelope my-info-icons"></i><span class="text-uppercase text-info">Email:
+          </span><span>axelaranibar3@gmail.com </span></div>
+
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 site-form">
+        <form id="my-form" action="forms.php" method="post">
+          <div class="form-group"><label class="sr-only" for="firstname">First Name</label><input class="form-control"
+              type="text" name="nombre" placeholder="Nombre" required></div>
+          <div class="form-group"><label class="sr-only" for="phonenumber">Phone Number</label><input
+              class="form-control" type="text" name="telefono" placeholder="Teléfono" id="" required></div>
+          <div class="form-group"><label class="sr-only" for="email">Email Address</label><input class="form-control"
+              type="text" name="correo" placeholder="Correo" id="" required></div>
+          <div class="form-group"><textarea class="form-control" name="mensaje" required=""
+              placeholder="Escribe el mensaje" rows="8"></textarea></div><button class="btn btn-light btn-lg"
+            type="submit" value="ENVIAR" id="boton">Enviar </button>
+        </form>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/js/Card-Carousel.js"></script>
+</body>
+
+</html>
