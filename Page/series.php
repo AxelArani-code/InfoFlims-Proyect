@@ -228,7 +228,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <div class="container">
     <div class="col-md-6 col-lg-8 mx-auto">
             <br><br>
-            <p class="copyright text-muted text-center">InfoFlims 2020 | Diseñor web por Axel Aranibar</p>
+            <p class="copyright text-muted text-center">InfoFlims 2020 | Diseñor web por<a href="https://energia-p.000webhostapp.com/">Axel Aranibar</a>  </p>
             <a href="contact.html"><strong>Contactarnos</strong></a><br><br><br>
           </div>
     </div>

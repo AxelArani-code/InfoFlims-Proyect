@@ -40,7 +40,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="contact.html">Contactarnos</a></li>
           <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -229,7 +228,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div class="container">
     <div class="col-md-6 col-lg-8 mx-auto">
             <br><br>
-            <p class="copyright text-muted text-center">InfoFlims 2020 | Diseñor web por Axel Aranibar</p>
+            <p class="copyright text-muted text-center">InfoFlims 2020 | Diseñor web por <a href="https://energia-p.000webhostapp.com/">Axel Aranibar</a></p>
             <a href="contact.html"><strong>Contactarnos</strong></a><br><br><br>
           </div>
     </div>

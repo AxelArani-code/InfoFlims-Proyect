@@ -20,6 +20,8 @@ echo $id;
     $telefono = stripslashes($_POST['telefono']);
     $genero = stripslashes($_POST['genero']);
     
+  
+
     $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
     // For image upload
     $target_dir = "images/";

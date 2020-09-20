@@ -38,7 +38,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="contact.html">Contactarnos</a></li>
           <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -60,7 +59,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <div class="row">
       <div class="col-md-4 relative">
         <form action="form.php" method="post" enctype="multipart/form-data">
-          <h2 class="text-center mb-3 mt-3">Ingrese una imagen</h2>
+          <h2 class="text-center mb-3 mt-3">Actualizar su foto de perfil</h2>
           <?php if (!empty($msg)): ?>
           <div class="alert <?php echo $msg_class; ?>" role="alert">
             <?php echo $msg; ?>
