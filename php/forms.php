@@ -6,5 +6,11 @@
     $mensaje=$_POST["mensaje"];
     $contenido="Nombre: ". $nombre ."\nCorreo". $correo . "\nTelefono". $telefono . "\nMensaje". $mensaje;
     mail($destino, "Contacto ", $contenido);
-    hearder("Location: gracias.php");
+    if(mail){
+        header("location: index.html");
+        echo "<script>alert('Mensaje enviado')</script>";
+        
+   }else{
+       echo"Hay unos problemas, ya lo areglaremos.";
+   }
 ?>

@@ -41,6 +41,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="netflix.php">Netflix</a></li>
           <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"

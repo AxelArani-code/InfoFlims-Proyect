@@ -15,7 +15,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title></title>
+  <title>Inicio</title>
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
   <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
@@ -42,6 +42,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="netflix.php">Netflix</a></li>
           <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
