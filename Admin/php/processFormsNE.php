@@ -1,8 +1,8 @@
 <?php
 // Initialize the session
 session_start();
-$id=$_SESSION['id'];
-echo $id;
+$id=$_REQUEST['info_id'];
+echo$id;
 //Assigning messages
   $msg = "";
   $msg_class = "";
@@ -11,22 +11,21 @@ echo $id;
   if (isset($_POST['save_profile'])) {
     // for the database
     //Variables
-    $bio = stripslashes($_POST['bio']);
-    $nombre = stripslashes($_POST['nombre']);
-    $apellido = stripslashes($_POST['apellido']); 
-    $email = stripslashes($_POST['email']);
-    $telefono = stripslashes($_POST['telefono']);
-    $genero = stripslashes($_POST['genero']);
+    $title = stripslashes($_POST['title']);
+    $trailer = stripslashes($_POST['trailer']);
+    $dates = stripslashes($_POST['dates']);
+    $descriptions = stripslashes($_POST['descriptions']);
+    
     
   
 
-    $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
+    $profileImageName = time() . '-' . $_FILES["imagenes"]["name"];
     // For image upload
-    $target_dir = "images/";
+    $target_dir = ".././assets/img/ ";
     $target_file = $target_dir . basename($profileImageName);
     // VALIDATION
     // validate image size. Size is calculated in Bytes
-    if($_FILES['profileImage']['size'] > 400000) {
+    if($_FILES['imagenes']['size'] > 400000) {
       $msg = "Image size should not be greated than 200Kb";
       $msg_class = "alert-danger";
     }
@@ -39,8 +38,8 @@ echo $id;
     
     // Upload image only if no errors
     if (empty($error)) {
-      if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file)) {
-        $sql = "UPDATE  users SET profile_image='$profileImageName' ,bio='$bio', nombre='$nombre', apellido='$apellido', email='$email', telefono='$telefono',genero='$genero' WHERE id ='$id'";
+      if(move_uploaded_file($_FILES["imagenes"]["tmp_name"], $target_file)) {
+        $sql = "UPDATE  netflix SET imagenes='$profileImageName' , title='$title', trailer='$trailer', dates='$dates', descriptions='$descriptions' WHERE info_id='$id'";
         if(mysqli_query($conn, $sql)){
           $msg = "Image uploaded and saved in the Database";
           $msg_class = "alert-success";
@@ -54,4 +53,5 @@ echo $id;
       }
     }
   }
+  
 ?>

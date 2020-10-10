@@ -1,12 +1,13 @@
 <?php
 // Initialize the session
 session_start();
-
+$conexion = mysqli_connect("localhost", "root", "", "demo");
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("location: login.php");
   exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -85,153 +86,31 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       <h1 class="masthead-heading mb-0">Destacados</h1><br><br>
     </div>
 
+    
+    <table>
+    <?php
+    $sql="SELECT*FROM information";
+    $resul=mysqli_query($conexion,$sql);
+    while($mostrar=mysqli_fetch_array($resul)){
+    ?>
     <section>
-      <div class="container">
+      <div class="container" >
+
         <figure class="snip1527">
           <div class="image">
-            <img src="../assets/img/sonic-the-hedgehog-4k.jpg" alt="pr-sample23" /></div>
+            <img src="<?php echo '.././assets/img/ ' .$mostrar['imagenes'] ?>" alt="pr-sample23" /></div>
           <figcaption>
-            <div class="date"><span class="day">14</span><span class="month">Febr</span></div>
-            <h3>Sonic: La película</h3>
-            <p>
-              Después de descubrir a un increíblemente veloz erizo azul, un oficial de policía de un pequeño pueblo debe
-              ayudarlo a derrotar a un genio malvado.
-            </p>
-
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/v1ljrA7P0to" class="position-relative" role="button" aria-pressed="true">
+            <div class="date"><span class="day month"><?php echo $mostrar['dates']?></span> <span class="month"></span></div>
+            <h3><?php echo $mostrar['title']?></h3>
+            <p><?php echo $mostrar['descriptions']?></p>
+            <a href="<?php echo $mostrar['trailer'] ?>" class="position-relative" role="button" aria-pressed="true">
               <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
           </figcaption>
         </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="https://www.cinecalidad.is/wp-content/uploads/2020/03/aves-de-presa-y-la-fantabulosa-emancipacion-de-harley-quinn-4k.jpg"
-              alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">29</span><span class="month">Ene</span></div>
-            <h3>Aves de presa</h3>
-            <p>
-              Cuando el nefasto villano de Gotham, Roman Sionis, y su mano derecha, Zsasz, piden una recompensa por una
-              joven llamada Cass, toda la ciudad comienza a buscarla.
-            </p>
-
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/xthGgPbyhD4" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="https://www.cinecalidad.is/wp-content/uploads/2020/04/bad-boys-for-life-4k.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">16</span><span class="month">Ene</span></div>
-            <h3>Bad Boys para siempre</h3>
-            <p>
-              Marcus y Mike deben confrontar cambios de carrera y crisis de edad media, cuando se unen a un equipo de
-              élite.
-            </p>
-
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/HxbngF7jz3w" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/la-vieja-guardia.jpg" alt="pr-sample23" /></div>
-          <figcaption>
-            <div class="date"><span class="day">10</span><span class="month">Juli</span></div>
-            <h3>La vieja guardia</h3>
-            <p>
-              Un grupo secreto de mercenarios con la misteriosa inhabilidad de morir han luchado por siglos. Pero cuando
-              sus extraordinarias habilidades del equipo son repentinamente expuestas durante una misión.
-            </p>
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/OCDhMOrCEoc" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527 ">
-          <div class="image"><img src="../assets/img/the-invisible-man-4k.jpg" alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">27</span><span class="month">Febr</span></div>
-            <h3>El hombre invisible</h3>
-            <p>
-              Cuando el ex de Cecilia se quita la vida y le deja su fortuna, ella sospecha que su muerte fue un engaño.
-              Conforme una serie de coincidencias se vuelven letales.
-            </p>
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/Yghnm_17a8w" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/1917-4k.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">04</span><span class="month">Dec</span></div>
-            <h3>1917</h3>
-            <p>
-              6 de abril de 1917. Mientras un regimiento se alista para adentrarse en territorio enemigo, dos soldados
-              reciben la tarea de correr contra el tiempo para entregar un mensaje que evitará que 1600 hombres caminen
-              directo hacia una trampa mortal.
-            </p>
-
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/YjJS6X_MxFQ" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/jumanji-next-level-4k.jpg" alt="pr-sample23" /></div>
-          <figcaption>
-            <div class="date"><span class="day">09</span><span class="month">Ene</span></div>
-            <h3>Jumanji: El siguiente nivel</h3>
-            <p>
-              El grupo ha vuelto pero el juego ha cambiado. Cuando regresan a Jumanji para rescatar a uno de los suyos,
-              los jugadores deberán aventurarse por lugares desconocidos e inexplorados.
-            </p>
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/cohV0RtTfQw" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527 ">
-          <div class="image"><img src="../assets/img/malibu-rescue-the-next-wave.jpg" alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
-            <h3>Los vigilantes de Malibú</h3>
-            <p>
-              Es verano y los rescatistas favoritos de todos, los Flounders, están de vuelta en la Torre 2. Con el
-              campeonato internacional de rescatistas junior que se llevará a cabo en California, los ojos del planeta
-              están en la playa de Malibú.
-            </p>
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/_dOsJFhJNGc" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/proyecto-power.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
-            <h3>Proyecto Power</h3>
-            <p>
-              Una píldora que le otorga a sus usuarios superpoderes únicos e impredecibles durante cinco minutos llega a
-              las calles de Nueva Orleans.
-            </p>
-            <a href="../Component/MeGusta1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/T-wJ7EYAIPI" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-      </div>
-    </section>    
+    </section>
+    <?php
+  }?>
+  </table>
     <div class="container">
     <div class="col-md-6 col-lg-8 mx-auto">
             <br><br>

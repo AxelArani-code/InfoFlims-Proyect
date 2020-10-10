@@ -36,7 +36,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
     <div class="container">
-      <p class="navbar-brand">Hello,<b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>.</p><button
+      <p class="navbar-brand">Hellox,<b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>.</p><button
         data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">

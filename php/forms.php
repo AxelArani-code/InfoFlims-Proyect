@@ -7,7 +7,7 @@
     $contenido="Nombre: ". $nombre ."\nCorreo". $correo . "\nTelefono". $telefono . "\nMensaje". $mensaje;
     mail($destino, "Contacto ", $contenido);
     if(mail){
-        header("location: index.html");
+        header("location: index.php");
         echo "<script>alert('Mensaje enviado')</script>";
         
    }else{

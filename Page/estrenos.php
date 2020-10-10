@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 session_start();
- 
+$conexion = mysqli_connect("localhost", "root", "", "demo");
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
@@ -72,159 +72,31 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
 
 
+    <table>
+    <?php
+    $sql="SELECT*FROM estrenos";
+    $resul=mysqli_query($conexion,$sql);
+    while($mostrar=mysqli_fetch_array($resul)){
+    ?>
     <section>
       <div class="container">
+
         <figure class="snip1527">
           <div class="image">
-            <img src="../assets/img/estrenos/81HQ90Xwz4L._RI_.jpg" alt="pr-sample23" /></div>
+            <img src="<?php echo'.././assets/img/ '. $mostrar['imagenes'] ?>" alt="pr-sample23" /></div>
           <figcaption>
-            <div class="date"><span class="day">2</span><span class="month">Nov</span></div>
-            <h3>Timetrap</h3>
-            <p>
-              Un grupo de estudiantes queda atrapado dentro de una misteriosa cueva donde descubren que el tiempo pasa
-              de manera diferente bajo tierra que en la superficie.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/DYGx3AlK23s" class="position-relative" role="button" aria-pressed="true">
+            <div class="date"><span class="day month"><?php echo $mostrar['dates']?></span> <span class="month"></span></div>
+            <h3><?php echo $mostrar['title']?></h3>
+            <p><?php echo $mostrar['descriptions']?></p>
+            <a href="<?php echo $mostrar['trailer'] ?>" class="position-relative" role="button" aria-pressed="true">
               <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
           </figcaption>
         </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/estrenos/91yy24s7vwL._RI_.jpg" alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">30</span><span class="month">Jul</span></div>
-            <h3>Tammy</h3>
-            <p>
-              Después de perder su trabajo, chocar su carro y descubrir la infidelidad de su marido, una mujer sale de
-              viaje con su esforzada abuela.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://youtu.be/N8d6Bpl2eAo" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/estrenos/balle_perdue-785684707-large.jpg" alt="pr-sample25" />
-          </div>
-          <figcaption>
-            <div class="date"><span class="day">19</span><span class="month">Jul</span></div>
-            <h3>Bala perdida</h3>
-            <p>
-              El mecánico Lino es un apasionado de los autos de combate, pero cuando se enfrenta a policías corruptos,
-              éstos le ofrecen un trato que no puede rechazar.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://www.youtube.com/watch?v=rRvokiv8gZM" class="position-relative" role="button"
-              aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/estrenos/f768x1-950002_950129_155.png" alt="pr-sample23" /></div>
-          <figcaption>
-            <div class="date"><span class="day">7</span><span class="month">Mayo</span></div>
-            <h3>Crímenes de familia</h3>
-            <p>
-              Un matrimonio adulto, residente de uno de los barrios más lujosos de Buenos Aires, debe enfrentar la
-              acusación de intento de homicidio que pesa sobre su hijo Daniel.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://www.youtube.com/watch?v=jlS78f4XcSY" class="position-relative" role="button"
-              aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527 ">
-          <div class="image"><img src="../assets/img/estrenos/hejter.jpg" alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">6</span><span class="month">Marz</span></div>
-            <h3>Hater</h3>
-            <p>
-              Un joven estudiante de derecho consigue trabajo en una compañía de relaciones públicas, y lo que parecía
-              una simple tarea se convierte en una granja de trolls. Allí se destaca en el negocio de esparcir noticias
-              falsas y odio online, cuyos blancos son personalidades, celebridades y políticos.s.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://www.youtube.com/watch?v=gRrBVSG99Kk" class="position-relative" role="button"
-              aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/estrenos/the-kissing-booth-2.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">24</span><span class="month">Jul</span></div>
-            <h3>El stand de los besos 2</h3>
-            <p>
-              Después de un verano romántico juntos, Noah se va a Harvard, y Elle regresa a la escuela de secundaria
-              para cursar su último año.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://www.youtube.com/watch?v=R7l4O-6TmBE" class="position-relative" role="button"
-              aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/estrenos/Vivarium-751492423-large.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">11</span><span class="month">Mar</span></div>
-            <h3>Vivarium</h3>
-            <p>
-              Una joven pareja visita una inmobiliaria para comprar una casa. Un extraño agente los acompaña a una
-              nueva, misteriosa y peculiar urbanización para mostrarles una vivienda unifamiliar. Allí se quedarán
-              atrapados en una laberíntica pesadilla.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://www.youtube.com/watch?v=SvE7HGwxA40" class="position-relative" role="button"
-              aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <br>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/estrenos/unnamed (2).jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">14</span><span class="month">Jul</span></div>
-            <h3>Shaft</h3>
-            <p>
-              Cuando su mejor amigo muere en circunstancias poco claras, un agente del FBI experto en ciberseguridad se
-              une a su padre, el legendario John Shaft, para navegar las calles del Harlem de Nueva York, descubrir la
-              verdad y resolver el crimen.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://www.youtube.com/watch?v=TuFtQFYxDv4" class="position-relative" role="button"
-              aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure><br>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/estrenos/fatal-affair.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">16</span><span class="month">Jul</span></div>
-            <h3>Encuentro fatal</h3>
-            <p>
-              Ellie intenta arreglar su matrimonio con su marido Marcus después de un breve encuentro con un viejo
-              amigo, David, solo para descubrir que Davids es mucho más peligroso e inestable de lo que parece.
-            </p>
-            <a href="../Component/MeGusta2.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">Me Gusta</button></a>
-            <a href="https://www.youtube.com/watch?v=I2W1XvYAyNk" class="position-relative" role="button"
-              aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
+    </section>
+    <?php
+  }?>
+  </table>
 
-        </figure>
-      </div>
 
       <div class="container">
     <div class="col-md-6 col-lg-8 mx-auto">
