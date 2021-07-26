@@ -37,10 +37,17 @@ $conexion = mysqli_connect("localhost", "root", "", "demo");
 
           <li class="nav-item" role="presentation"><a class="nav-link" href="index.php"
               onclick="myFunction()">Series</a></li>
-          <div class="btn-group" role="group">
-            <a class="btn btn-outline-primary" href="login.php">Iniciar Sesión</a>
-             
-          </div>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="./Page//Component/ayuda-1.php">Ayuda</a></li>
+              <li class="nav-item dropdown">
+            <a class="btn btn-outline-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Iniciar Sesión</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" role="presentation" href="login.php">Usuario</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="loginAd.php">Admin</a>
+            </div>
+          </li>
+         
         </ul>
       </div>
     </div>
@@ -48,7 +55,7 @@ $conexion = mysqli_connect("localhost", "root", "", "demo");
   <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-heading mb-0">Los mejores estrenos que veras</h1>
+        <h1 class="masthead-heading mb-0">Los mejores estrenos que verás</h1>
       </div>
     </div>
     <div class="bg-circle-1 bg-circle"></div>
@@ -66,27 +73,30 @@ $conexion = mysqli_connect("localhost", "root", "", "demo");
     <section>
       <div class="container" >
 
-        <figure class="snip1527">
+        <figure class="snip1527" style="border-radius: 25px; height: 500px; width: 500px;">
           <div class="image">
             <img src="<?php echo './assets/img/ ' .$mostrar['imagenes'] ?>" alt="pr-sample23" /></div>
           <figcaption>
             <div class="date"><span class="day month"><?php echo $mostrar['dates']?></span> <span class="month"></span></div>
             <h3><?php echo $mostrar['title']?></h3>
             <p><?php echo $mostrar['descriptions']?></p>
-            <a href="<?php echo $mostrar['trailer'] ?>" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
+            <a href="./Page/Component/dep-1.php?axel=10&info_id=<?php echo $mostrar['info_id']; ?>&title=<?php echo$mostrar['title']?>&descriptions=<?php echo$mostrar['descriptions']?>&imagenes=<?php echo$mostrar['imagenes']?>&trailer=<?php echo$mostrar['trailer']?>&genero=<?php echo $mostrar['genero']; ?>&audio=<?php echo $mostrar['audio']; ?>" class="position-relative" role="button">
+              <button  style="border-radius: 25px;" type="button" class="btn btn-info btn-sm"  >Ver más</button></a>
           </figcaption>
         </figure>
     </section>
     <?php
   }?>
   </table>
-  <div class="container">
-      <div class="col-md-6 col-lg-8 mx-auto">
+  <nav aria-label="Page navigation example">
+  <div class="container ">
+       <div class="col-md-6 col-lg-8 mx-auto pagination justify-content-center">
               <br><br>
-              <p class="copyright text-muted text-center">InfoFlims 2020 | Diseñor web por Axel Aranibar</p>
+              <p class="copyright text-muted text-center">InfoFlims 2020 |
+             <a  class="" href="contact.html"><strong>Contactarnos</strong></a></p>
+            </div>
       </div>
-  </div>  
+   </nav> 
     <script>
       function myFunction(){alert("Hola, para poder ingresar deberá registrarse, antes que nada. Gracias ");}
     </script>

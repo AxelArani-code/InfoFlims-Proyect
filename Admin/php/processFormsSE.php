@@ -15,6 +15,9 @@ echo$id;
     $trailer = stripslashes($_POST['trailer']);
     $dates = stripslashes($_POST['dates']);
     $descriptions = stripslashes($_POST['descriptions']);
+    $genero = stripslashes($_POST['genero']);
+    $audio = stripslashes($_POST['audio']);
+    
     
     
   
@@ -39,7 +42,7 @@ echo$id;
     // Upload image only if no errors
     if (empty($error)) {
       if(move_uploaded_file($_FILES["imagenes"]["tmp_name"], $target_file)) {
-        $sql = "UPDATE  series SET imagenes='$profileImageName' , title='$title', trailer='$trailer', dates='$dates', descriptions='$descriptions' WHERE info_id='$id'";
+        $sql = "UPDATE  series SET imagenes='$profileImageName' , title='$title', trailer='$trailer', dates='$dates', descriptions='$descriptions', genero='$genero',audio='$audio' WHERE info_id='$id'";
         if(mysqli_query($conn, $sql)){
           $msg = "Image uploaded and saved in the Database";
           $msg_class = "alert-success";

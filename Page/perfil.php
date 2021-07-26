@@ -9,6 +9,12 @@ $id=$_SESSION['id'];
 //selection 
   $results = mysqli_query($conn, "SELECT * FROM users WHERE  id='$id'");
   $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
+
+  // Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("location: login.php");
+  exit();
+}
 ?>
 
 
@@ -42,9 +48,19 @@ $id=$_SESSION['id'];
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="netflix.php">Netflix</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Inicio</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Apartados</a>
+            <div class="dropdown-menu">
+
+              <a class="dropdown-item" role="presentation" href="netflix.php">Netflix</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="series.php">HBO</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="MostRecent.php">Proximamente</a>
+            </div>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
               aria-expanded="false">Usuarios</a>
@@ -54,6 +70,7 @@ $id=$_SESSION['id'];
               <a class="dropdown-item" role="presentation" href="../logout.php">Cerrar sesión</a>
             </div>
           </li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="ayuda.php">Ayuda</a></li>
         </ul>
       </div>
     </div>
@@ -67,26 +84,25 @@ $id=$_SESSION['id'];
       height="90" alt="">
 
     <h4><a href="form.php">Editar Perfil</a></h4>
-    <h3 class="profile-name" style="background-color: #1340e0;"><?php echo $user ['nombre']; echo $user ['apellido']?>
+    <h3 class="profile-name" style="background-color: #1340e0;"><?php echo $user ['nombre']; echo'  '. $user ['apellido']?>
     </h3>
     <p class="profile-bio"> <?php echo $user['bio']; ?></p>
     <ul class="profile-name" style="background-color: #2E2E2E;">
-      <li>Genero: <?php echo $user['genero']?><i></i></li>
-      <li>Numero de teléfono: <?php echo $user['telefono']?><i></i></li>
+      <li><?php echo 'Género: '. $user['genero']?><i></i></li>
+      <li><?php echo'Número de teléfono:'. $user['telefono']?><i></i></li>
     </ul>
   </div>
   <?php endforeach; ?>
 
-  <div class="container">
-    <div class="col-md-6 col-lg-8 mx-auto">
-      <br><br>
-      <p class="copyright text-muted text-center">InfoFlims 2020 | Diseñor web por<a
-          href="https://energia-p.000webhostapp.com/">Axel Aranibar</a></p>
-      <div class="mx-auto" style="width: 100px;">
-        <a href="contact.html"><strong>Contactarnos</strong></a><br><br><br>
+  <nav aria-label="Page navigation example">
+  <div class="container ">
+       <div class="col-md-6 col-lg-8 mx-auto pagination justify-content-center">
+              <br><br>
+              <p class="copyright text-muted text-center">InfoFlims 2020 |
+             <a  class="" href="contact.html"><strong>Contactarnos</strong></a></p>
+            </div>
       </div>
-    </div>
-  </div>
+   </nav>
 
   <script src="../assets/js/jquery.min.js"></script>
   <script src="../assets/bootstrap/js/bootstrap.min.js"></script>

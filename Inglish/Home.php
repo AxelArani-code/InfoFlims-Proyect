@@ -1,13 +1,14 @@
 <?php
 // Initialize the session
 session_start();
- 
+$conexion = mysqli_connect("localhost", "root", "", "demo");
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("location: login.php");
+  exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,32 +35,48 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <body>
 
-  <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
     <div class="container">
-      <p class="navbar-brand">Hellox,<b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>.</p><button
-        data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
+      <p class="navbar-brand">HELLO,<b><?php echo htmlspecialchars(
+        $_SESSION["username"]
+      ); ?></b>.</p><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
+              <!--  <form class="form-inline" action="buscar.php" method="POST">
+                    <input class="form-control mr-sm-2" type="text" name="buscar" placeholder="Search" aria-label="Search">
+                    <input type="submit" value="Buscar">
+              </form>-->
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item" role="presentation"><a class="nav-link" href="Home.php">Flims</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="SeriesN.php">Series</a></li>
-          <li class="nav-item dropdown">
+        <li class="nav-item" role="presentation"><a class="nav-link" href="Home.php">Home</a></li>
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-              aria-expanded="false">users</a>
+              aria-expanded="false">Pages </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" role="presentation" href="reset-password2.php">Change Password</a>
+              <a class="dropdown-item" role="presentation" href="netflix.php">Netflix</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" role="presentation" href="../logout.php">Sign off</a>
+              <a class="dropdown-item" role="presentation" href="series.php">HBO</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="MostRecent.php">Coming soon</a>
             </div>
           </li>
-          <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              English
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a class="dropdown-item" href="../Page/registered.php">Spanish</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Usuarios</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" role="presentation" href="../Page/perfil.php">Profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="../logout.php">Close session</a>
             </div>
+          </li>
+          
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">English</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" role="presentation" href=".././Page/registered.php">Spanish</a>
+              </div>
+          </li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="ayuda.php">help</a></li>
           </div>
         </ul>
       </div>
@@ -69,7 +86,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="masthead-content">
       <div class="container">
         <h1 class="masthead-heading mb-0">The best premieres you will see</h1><a
-          class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="premieres.php">Premieres</a>
+          class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="estrenos.php">Premieres</a>
       </div>
     </div>
     <div class="bg-circle-1 bg-circle"></div>
@@ -84,149 +101,33 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
 
 
+
+    <table>
+    <?php
+    $sql = "SELECT*FROM ingles";
+    $resul = mysqli_query($conexion, $sql);
+    while ($mostrar = mysqli_fetch_array($resul)) { ?>
     <section>
       <div class="container">
-        <figure class="snip1527">
+        <figure class="snip1527" style="border-radius: 25px;  height: 500px; width: 500px;" >
           <div class="image">
-            <img src="../assets/img/sonic-the-hedgehog-4k.jpg" alt="pr-sample23" /></div>
+            <img src="<?php echo '.././assets/img/ ' .
+              $mostrar['imagenes']; ?>" alt="pr-sample23" /></div>
           <figcaption>
-            <div class="date"><span class="day">14</span><span class="month">Febr</span></div>
-            <h3>Sonic: The Movie</h3>
-            <p>
-              After discovering an incredibly fast blue hedgehog, a small town police officer must help him defeat an
-              evil genius.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/v1ljrA7P0to" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
+            <div class="date"><span class="day month"><?php echo $mostrar[
+              'dates'
+            ]; ?></span> <span class="month"></span></div>
+            <h3><?php echo $mostrar['title']; ?></h3>
+            <p><?php echo $mostrar['descriptions']; ?></p>
+              <a href="depIngles.php?axel=10&info_id=<?php echo $mostrar['info_id']; ?>&title=<?php echo $mostrar['title']; ?>&descriptions=<?php echo $mostrar['descriptions']; ?>&imagenes=<?php echo $mostrar['imagenes']; ?>&trailer=<?php echo $mostrar['trailer']; ?>&genero=<?php echo $mostrar['genero']; ?>&audio=<?php echo $mostrar['audio']; ?>" class="position-relative" role="button">
+              <button  style="border-radius: 25px;" type="button" class="btn btn-info btn-sm"  >See more </button>
+              </a>
           </figcaption>
         </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="https://www.cinecalidad.is/wp-content/uploads/2020/03/aves-de-presa-y-la-fantabulosa-emancipacion-de-harley-quinn-4k.jpg"
-              alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">29</span><span class="month">Ene</span></div>
-            <h3>Birds of prey</h3>
-            <p>
-              When Gotham's nefarious villain Roman Sionis and his right-hand man, Zsasz, demand a bounty for a young
-              woman named Cass, the entire city begins searching for her.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/xthGgPbyhD4" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="https://www.cinecalidad.is/wp-content/uploads/2020/04/bad-boys-for-life-4k.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">16</span><span class="month">Ene</span></div>
-            <h3>Bad boys forever</h3>
-            <p>
-              Marcus and Mike must confront career changes and a mid-life crisis when they join an elite team.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/HxbngF7jz3w" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/la-vieja-guardia.jpg" alt="pr-sample23" /></div>
-          <figcaption>
-            <div class="date"><span class="day">10</span><span class="month">Juli</span></div>
-            <h3>The old guard</h3>
-            <p>
-              A secret group of mercenaries with the mysterious inability to die have fought for centuries. But when his
-              extraordinary team abilities are suddenly exposed during a mission.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/OCDhMOrCEoc" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527 ">
-          <div class="image"><img src="../assets/img/the-invisible-man-4k.jpg" alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">27</span><span class="month">Febr</span></div>
-            <h3>The invisible man</h3>
-            <p>
-              When Cecilia's ex takes his own life and leaves her his fortune, she suspects that his death was a hoax.
-              As a series of coincidences turn lethal.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/Yghnm_17a8w" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/1917-4k.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">04</span><span class="month">Dec</span></div>
-            <h3>1917</h3>
-            <p>
-              April 6, 1917. As a regiment prepares to enter enemy territory, two soldiers are tasked with racing
-              against time to deliver a message that will prevent 1600 men from walking straight into a death trap.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/YjJS6X_MxFQ" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/jumanji-next-level-4k.jpg" alt="pr-sample23" /></div>
-          <figcaption>
-            <div class="date"><span class="day">09</span><span class="month">Ene</span></div>
-            <h3>Jumanji: The Next Level</h3>
-            <p>
-              The group is back but the game has changed. When they return to Jumanji to rescue one of their own,
-              players must venture into unknown and unexplored places.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/cohV0RtTfQw" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527 ">
-          <div class="image"><img src="../assets/img/malibu-rescue-the-next-wave.jpg" alt="pr-sample24" /></div>
-          <figcaption>
-            <div class="date"><span class="day">17</span><span class="month">Nov</span></div>
-            <h3>Malibu vigilantes</h3>
-            <p>
-              It's summer and everyone's favorite rescuers, the Flounders, are back in Tower 2. With the international
-              junior rescuers championship taking place in California, the eyes of the planet are on the beach in
-              Malibu.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/_dOsJFhJNGc" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-        <figure class="snip1527">
-          <div class="image"><img src="../assets/img/proyecto-power.jpg" alt="pr-sample25" /></div>
-          <figcaption>
-            <div class="date"><span class="day">01</span><span class="month">Dec</span></div>
-            <h3>Power Project</h3>
-            <p>
-              A pill that gives its users unique and unpredictable superpowers for five minutes hits the streets of New
-              Orleans.
-            </p>
-            <a href=".././Component/ItLikeIt1.php" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-primary btn-sm">I like it</button></a>
-            <a href="https://youtu.be/T-wJ7EYAIPI" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
-          </figcaption>
-        </figure>
-      </div>
     </section>
-
-    
+   <?php }
+    ?>
+  </table>
     <div class="container">
     <div class="col-md-6 col-lg-8 mx-auto">
             <br><br>

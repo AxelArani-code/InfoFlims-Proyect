@@ -31,29 +31,41 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </head>
 
 <body>
-   <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom" action="forms.php">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
     <div class="container">
-      <button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
+      <p class="navbar-brand">Hola,<b><?php echo htmlspecialchars(
+          $_SESSION["username"]
+        ); ?></b>.</p><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Inicio</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Apartados</a>
+            <div class="dropdown-menu">
+
+              <a class="dropdown-item" role="presentation" href="netflix.php">Netflix</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="series.php">HBO</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="MostRecent.php">Proximamente</a>
+            </div>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
               aria-expanded="false">Usuarios</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" role="presentation" href="perfil.php">Perfil</a>
+              <a class="dropdown-item" role="presentation" href="../Page/perfil.php">Perfil</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" role="presentation" href="">Eliminar</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" role="presentation" href="logout.php">Cerrar sesión</a>
+              <a class="dropdown-item" role="presentation" href="../logout.php">Cerrar sesión</a>
             </div>
           </li>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="./Component/ayuda.php">Ayuda</a></li>
         </ul>
       </div>
     </div>
-  </nav><br><br><br><br><br><br>
+  </nav><br><br><br><br><br>
   
   <div class="container profile profile-view" id="profile">
     <div class="row">
@@ -94,7 +106,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             required="" name="email"></div>
         <div class="form-row">
           <div class="col-sm-12 col-md-6">
-            <div class="form-group"><label>Numero de Teléfono</label><input class="form-control" type=""
+            <div class="form-group"><label>Número de Teléfono</label><input class="form-control" type=""
                 name="telefono" autocomplete="off" required=""></div>
           </div>
           <div class="col-sm-12 col-md-6">
@@ -111,9 +123,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <hr>
         <div class="form-row">
           <div class="col-md-12 content-right">
-            <button class="btn btn-primary form-btn" type="submit" name="save_profile">Guardar</button>
+            <button class="btn btn-success form-btn" type="submit" name="save_profile">Guardar</button>
             <input type="reset" class="btn btn-danger form-btn" value="Borrar">
             <a href="../reset-password.php"  class="btn btn-warning form-btn">Cambiar de contraseña</a>
+            <a href="delateUser.php"  class="btn btn-primary form-btn">Eliminar Cuenta</a>
           </div>
         </div>
       </div>

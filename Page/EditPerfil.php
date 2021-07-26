@@ -27,11 +27,12 @@
               class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Inicio</a></li>
               <li class="nav-item" role="presentation"><a class="nav-link" href="netflix.php">Netflix</a></li>
-              <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">HBO</a></li>
+              <li class="nav-item" role="presentation"><a class="nav-link" href="MostRecent.php">Información</a></li>
               <li class="nav-item dropdown">
-                
+              <li class="nav-item" role="presentation"><a class="nav-link" href="./Component/ayuda.php">Ayuda</a></li>
 
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                   aria-expanded="false">Usuarios</a>

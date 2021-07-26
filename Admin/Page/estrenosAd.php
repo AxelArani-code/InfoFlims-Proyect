@@ -1,7 +1,11 @@
 <?php
-  $conexion = mysqli_connect("localhost", "root", "", "demo");
-
-
+  session_start();
+$conexion = mysqli_connect("localhost", "root", "", "demo");
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("location: loginAd.php");
+  exit();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,24 +21,30 @@
 <body>
 <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" href="../../admin.php">Index</a>
+      <a class="nav-link active" href="../../admin.php">Inicio</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
         aria-expanded="false">Contenido</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="estrenosAd.php">Estrenos</a>
-        <div class="dropdown-divider"></div>
+        
         <a class="dropdown-item" href="netflixAd.php">Netflix</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="seriesAd.php">Series</a>
+        <a class="dropdown-item" href="seriesAd.php">HBO</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="estrenosAd.php">Estrenos</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="MostRecentAd.php">Proximamente </a>
       </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-primary" href="listAd.php">Usuarios</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
         aria-expanded="false">Sesion</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Cerras Sesion</a>
+        <a class="dropdown-item" href="../../logout.php">Cerras Sesion</a>
       </div>
     </li>
 
@@ -69,9 +79,7 @@
               role="button" aria-pressed="true">
               <button type="button" class="btn btn-dark btn-sm">Editar</button>
             </a>
-            <a href="" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-info btn-sm">Eliminar</button>
-            </a>
+
             <p><?php echo$mostrar['info_id']?></p>
           </div>
         </div>

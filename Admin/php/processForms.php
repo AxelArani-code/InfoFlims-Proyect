@@ -15,6 +15,7 @@ echo$id;
     $trailer = stripslashes($_POST['trailer']);
     $dates = stripslashes($_POST['dates']);
     $descriptions = stripslashes($_POST['descriptions']);
+ 
     
     
   

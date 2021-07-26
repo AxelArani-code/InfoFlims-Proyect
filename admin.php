@@ -1,7 +1,12 @@
 <?php
   $conexion = mysqli_connect("localhost", "root", "", "demo");
-
-
+  session_start();
+$conexion = mysqli_connect("localhost", "root", "", "demo");
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+  header("location: loginAd.php");
+  exit();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,24 +22,29 @@
 <body>
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Index</a>
+      <a class="nav-link active" href="#">Inicio</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
         aria-expanded="false">Contenido</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="Admin/Page/estrenosAd.php">Estrenos</a>
-        <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="Admin/Page/netflixAd.php">Netflix</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="Admin/Page/seriesAd.php">Series</a>
+        <a class="dropdown-item" href="Admin/Page/seriesAd.php">HBO</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="Admin/Page/estrenosAd.php">Estrenos</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="Admin/Page/MostRecentAd.php">Proximamente </a>
       </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-primary" href="Admin/Page/listAd.php">Usuarios</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
         aria-expanded="false">Sesion</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Cerras Sesion</a>
+        <a class="dropdown-item" href="logout.php">Cerras Sesion</a>
       </div>
     </li>
 
@@ -47,17 +57,6 @@
     <p>Bienvenido administrador, le recomendamos que el tamaño de las imágenes sean de ancho 416px y de alto de 600px.
       Buscar bien la información sobre el contenido, Gracias </p>
   </div>
-
-  <div class="card">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 
 
 
@@ -82,9 +81,7 @@
               role="button" aria-pressed="true">
               <button type="button" class="btn btn-dark btn-sm">Editar</button>
             </a>
-            <a href="" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-info btn-sm">Eliminar</button>
-            </a>
+
             <p><?php echo$mostrar['info_id']?></p>
           </div>
         </div>

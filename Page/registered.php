@@ -7,7 +7,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   header("location: login.php");
   exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -37,31 +36,45 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
     <div class="container">
       <p class="navbar-brand">Hola,<b><?php echo htmlspecialchars(
-          $_SESSION["username"]
-        ); ?></b>.</p><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
+        $_SESSION["username"]
+      ); ?></b>.</p><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
+              <!--  <form class="form-inline" action="buscar.php" method="POST">
+                    <input class="form-control mr-sm-2" type="text" name="buscar" placeholder="Search" aria-label="Search">
+                    <input type="submit" value="Buscar">
+              </form>-->
         <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Peliculas</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="netflix.php">Netflix</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="series.php">Series</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" href="registered.php">Inicio</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Apartados</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" role="presentation" href="netflix.php">Netflix</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="series.php">HBO</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" role="presentation" href="MostRecent.php">Proximamente</a>
+            </div>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
               aria-expanded="false">Usuarios</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" role="presentation" href="../Page/perfil.php"  >Perfil</a>
+              <a class="dropdown-item" role="presentation" href="../Page/perfil.php">Perfil</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" role="presentation" href="../logout.php">Cerrar sesión</a>
             </div>
           </li>
-          <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Español
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a class="dropdown-item" href="../Inglish/Home.php">English</a>
-            </div>
+          
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Español</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" role="presentation" href="../Inglish/Home.php">Ingles</a>
+              </div>
+          </li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="./Component/ayuda.php">Ayuda</a></li>
           </div>
         </ul>
       </div>
@@ -70,7 +83,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
   <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-heading mb-0">Los mejores estrenos que veras</h1><a
+        <h1 class="masthead-heading mb-0">Los mejores estrenos que verás</h1><a
           class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="estrenos.php">Estrenos</a>
       </div>
     </div>
@@ -89,36 +102,42 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     
     <table>
     <?php
-    $sql="SELECT*FROM information";
-    $resul=mysqli_query($conexion,$sql);
-    while($mostrar=mysqli_fetch_array($resul)){
-    ?>
+    $sql = "SELECT*FROM information";
+    $resul = mysqli_query($conexion, $sql);
+    while ($mostrar = mysqli_fetch_array($resul)) { ?>
     <section>
-      <div class="container" >
-
-        <figure class="snip1527">
+      <div class="container">
+        <figure class="snip1527" style="border-radius: 25px;  height: 500px; width: 500px;" >
           <div class="image">
-            <img src="<?php echo '.././assets/img/ ' .$mostrar['imagenes'] ?>" alt="pr-sample23" /></div>
+            <img src="<?php echo '.././assets/img/ ' .
+              $mostrar['imagenes']; ?>" alt="pr-sample23" /></div>
           <figcaption>
-            <div class="date"><span class="day month"><?php echo $mostrar['dates']?></span> <span class="month"></span></div>
-            <h3><?php echo $mostrar['title']?></h3>
-            <p><?php echo $mostrar['descriptions']?></p>
-            <a href="<?php echo $mostrar['trailer'] ?>" class="position-relative" role="button" aria-pressed="true">
-              <button type="button" class="btn btn-secondary btn-sm">Trailer</button></a>
+            <div class="date"><span class="day month"><?php echo $mostrar[
+              'dates'
+            ]; ?></span> <span class="month"></span></div>
+            <h3><?php echo $mostrar['title']; ?></h3>
+            <p><?php echo $mostrar['descriptions']; ?></p>
+              <a href="./Component/dep.php?axel=10&info_id=<?php echo $mostrar['info_id']; ?>&title=<?php echo $mostrar['title']; ?>&descriptions=<?php echo $mostrar['descriptions']; ?>&imagenes=<?php echo $mostrar['imagenes']; ?>&trailer=<?php echo $mostrar['trailer']; ?>&genero=<?php echo $mostrar['genero']; ?>&audio=<?php echo $mostrar['audio']; ?>" class="position-relative" role="button">
+              <button  style="border-radius: 25px;" type="button" class="btn btn-info btn-sm"  >Ver más</button></a>
+              </a>
           </figcaption>
         </figure>
     </section>
-    <?php
-  }?>
+   <?php }
+    ?>
   </table>
-    <div class="container">
-    <div class="col-md-6 col-lg-8 mx-auto">
-            <br><br>
-            <p class="copyright text-muted text-center">InfoFlims 2020 | Diseñor web por<a href="https://energia-p.000webhostapp.com/">Axel Aranibar</a></p>
-            <a href="contact.html"><strong>Contactarnos</strong></a><br><br><br>
-          </div>
-    </div>
+ 
 
+  <nav aria-label="Page navigation example">
+  <div class="container ">
+      <div class="col-md-6 col-lg-8 mx-auto pagination justify-content-center">
+              <br><br>
+              <p class="copyright text-muted text-center">InfoFlims 2020 |
+             <a  class="" href="contact.html"><strong>Contactarnos</strong></a></p>
+            </div>
+      </div>
+   </nav>
+ 
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/Card-Carousel.js"></script>

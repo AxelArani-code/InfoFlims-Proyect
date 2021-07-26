@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="card-header">
     <img src="./assets/img/Logo.png" class="img-fluid" alt="Responsive image">
     <div class="wrapper">
-        <h2>Cambia tu contraseña acá</h2>
+        <h2>Cambia tu contraseña</h2>
         <p>Complete este formulario para restablecer su contraseña.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
             <div class="form-group <?php echo (!empty($new_password_err)) ? 'has-error' : ''; ?>">

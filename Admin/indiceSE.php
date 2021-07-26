@@ -85,6 +85,14 @@
         </div>
         <div class="form-row">
           <div class="col-sm-12 col-md-6">
+            <div class="form-group"><label>Genero</label><input class="form-control" type="text" name="genero"></div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="form-group"><label>Audio-</label><input class="form-control" type="text" name="audio"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-sm-12 col-md-6">
             <div class="col-sm-12 col-md-6">
               <div class="form-group"><label>Fecha o Resolución </label><input class="form-control" type="text" name="dates"></div>
             </div>
